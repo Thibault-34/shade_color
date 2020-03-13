@@ -27,8 +27,8 @@ class App extends React.Component {
 		degree: 0,
 	};
 
-	_onChange = (key, e) => {
-		this.setState({ [key]: e.target.value });
+	_onChange = (key, value) => {
+		this.setState({ [key]: value });
 	};
 
 	render() {
@@ -50,7 +50,7 @@ class App extends React.Component {
 					<Input
 						type="text"
 						value={color}
-						onChange={e => this._onChange('color', e)}
+						onChange={e => this._onChange('color', e.target.value)}
 					/>
 					<Color color={color} />
 				</ColorContainer>
@@ -71,9 +71,11 @@ class App extends React.Component {
 					</div>
 					<hr style={{ width: '100%' }} />
 					<Input
-						type="text"
+						type="number"
 						value={degree}
-						onChange={e => this._onChange('degree', e)}
+						onChange={e =>
+							this._onChange('degree', +e.target.value)
+						}
 					/>
 					<div style={{ fontSize: 12, color: 'grey' }}>
 						<b>Nombre entier</b>; <b>Assombrir</b>: négatif;
